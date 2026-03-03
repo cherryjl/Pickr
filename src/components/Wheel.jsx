@@ -1,34 +1,92 @@
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 
-export default function Wheel({ tasks, selected, roll }) {
-  const [rotation, setRotation] = useState(0);
+export default function Wheel({
+  segments,
+  rotation,
+  onSpin,
+  onSpinEnd,
+  isSpinning,
+  result
+}) {
+  const sliceStyle = useMemo(() => {
+    if (!segments.length) return {};
 
-  useEffect(() => {
-    if (selected) {
-      const spin = 360 * 5 + Math.floor(Math.random() * 360);
-      setRotation(spin);
-    }
-  }, [selected]);
+    const colors = [
+      "#6366f1",
+      "#8b5cf6",
+      "#ec4899",
+      "#f43f5e",
+      "#f97316",
+      "#22c55e",
+      "#14b8a6",
+      "#0ea5e9"
+    ];
+
+    let gradient = "";
+    segments.forEach((segment, i) => {
+      const start = segment.startAngle;
+      const end = segment.endAngle;
+      const color = colors[i % colors.length];
+
+      gradient += `${color} ${start}deg ${end}deg, `;
+    });
+
+    return {
+      background: `conic-gradient(${gradient.slice(0, -2)})`
+    };
+  }, [segments]);
 
   return (
     <div style={{ textAlign: "center" }}>
-      <div
-        style={{
-          width: 200,
-          height: 200,
-          borderRadius: "50%",
-          border: "6px solid #6366f1",
-          margin: "0 auto",
-          transition: "transform 3s cubic-bezier(.17,.67,.83,.67)",
-          transform: `rotate(${rotation}deg)`
-        }}
-      />
+      <div className="pointer" />
 
-      <button onClick={roll} style={{ marginTop: "1rem" }}>
-        Spin
+      <div className="wheel-wrapper">
+        <div
+          className="wheel"
+          style={{
+            ...sliceStyle,
+            transform: `rotate(${rotation}deg)`
+          }}
+          onTransitionEnd={e => {
+            if (e.propertyName === "transform") {
+              onSpinEnd();
+            }
+          }}
+        >
+          {segments.map(segment => {
+            if (segment.angleSize < 12) return null;
+
+            const angle = segment.centerAngle;
+
+            return (
+              <div
+                key={segment.id}
+                className="wheel-label"
+                style={{
+                  transform:
+                    `translate(-50%, -50%) rotate(${angle}deg) ` +
+                    "translateY(-180px) " +
+                    `rotate(${-angle}deg)`
+                }}
+              >
+                <span>{segment.name}</span>
+              </div>
+            );
+          })}
+
+          <div className="wheel-center" />
+        </div>
+      </div>
+
+      <button onClick={onSpin} style={{ marginTop: "2rem" }} disabled={isSpinning}>
+        {isSpinning ? "Spinning..." : "Spin"}
       </button>
 
-      {selected && <h2>{selected.name}</h2>}
+      {result && (
+        <h2 className="reveal" style={{ marginTop: "1.5rem" }}>
+          Winner: {result}
+        </h2>
+      )}
     </div>
   );
 }

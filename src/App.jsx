@@ -9,18 +9,27 @@ export default function App() {
 
   return (
     <div className="container">
-      <h1>Pickr</h1>
+      <h1 className="app-title">Pickr</h1>
 
-      <div className="card">
-        <TimeSelector time={time} setTime={setTime} />
-      </div>
+      <div className="app-layout">
+        <div className="card card-time">
+          <TimeSelector
+            time={time}
+            setTime={setTime}
+          />
+        </div>
 
-      <div className="card">
-        <TaskManager tasks={tasks} setTasks={setTasks} />
-      </div>
+        <div className="card card-tasks">
+          <TaskManager tasks={tasks} setTasks={setTasks} />
+        </div>
 
-      <div className="card">
-        <Picker tasks={tasks} time={time} setTasks={setTasks} />
+        <div className="card card-picker">
+          <Picker
+            tasks={tasks}
+            time={time}
+            setTasks={setTasks}
+          />
+        </div>
       </div>
     </div>
   );

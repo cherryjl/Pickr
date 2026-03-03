@@ -4,12 +4,54 @@
   padding: 3rem 1.5rem;
 }
 
-.section {
-  margin-bottom: 2rem;
-}
-
-h1 {
+.app-title {
+  text-align: center;
   font-weight: 600;
   letter-spacing: -0.5px;
   margin-bottom: 2rem;
+  font-size: 3.5rem;
+}
+
+.app-layout {
+  display: block;
+}
+
+.app-layout .card {
+  margin-bottom: 1rem;
+}
+
+.app-layout .card:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1320px;
+  }
+
+  .app-layout {
+    display: grid;
+    grid-template-columns: minmax(360px, 1fr) minmax(560px, 620px);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .app-layout .card {
+    margin-bottom: 0;
+  }
+
+  .card-picker {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .card-time {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .card-tasks {
+    grid-column: 1;
+    grid-row: 2;
+  }
 }

@@ -1,6 +1,11 @@
-export default function TimeSelector({ time, setTime }) {
+export default function TimeSelector({
+  time,
+  setTime
+}) {
   return (
     <div className="time-selector">
+      <p className="time-helper">Choose how much time you have available right now.</p>
+
       <div className="time-presets">
         {[20, 40, 60, 120, 180, 240].map(v => (
           <button
