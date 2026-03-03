@@ -1,0 +1,60 @@
+:root {
+  --bg-dark: #0f172a;
+  --card-dark: #1e293b;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --text-light: #f1f5f9;
+  --card: var(--card-dark);
+  --card-soft: #334155;
+  --text-primary: var(--text-light);
+  --text-secondary: #cbd5e1;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --accent-soft: rgba(99, 102, 241, 0.35);
+  --shadow-soft: 0 10px 24px rgba(2, 6, 23, 0.35);
+  --transition: all 0.2s ease;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+}
+
+.card {
+  background: var(--card-dark);
+  padding: 1rem;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+input {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  margin-right: 0.5rem;
+}

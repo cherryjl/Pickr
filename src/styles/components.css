@@ -1,0 +1,115 @@
+.card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.input-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+input {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--card-soft);
+  color: var(--text-primary);
+  outline: none;
+}
+
+input:focus {
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+button {
+  background: var(--accent);
+  border: none;
+  padding: 0.75rem 1.2rem;
+  border-radius: var(--radius-md);
+  color: white;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--accent-soft);
+}
+
+/* Segmented Control */
+.segmented {
+  display: flex;
+  background: var(--card-soft);
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.segmented button {
+  flex: 1;
+  background: transparent;
+  border-radius: 999px;
+  color: var(--text-secondary);
+}
+
+.segmented button.active {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 4px 10px var(--accent-soft);
+}
+
+.task-manager {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.task-name {
+  flex: 1;
+}
+
+.task-number {
+  width: 4.5rem;
+  flex: 0 0 auto;
+}
+
+.task-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  background: var(--card-soft);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.8rem;
+}
+
+.time-selector {
+  display: grid;
+  gap: 1rem;
+}
+
+.time-presets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.time-range {
+  width: 100%;
+}
+
+.time-display {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
