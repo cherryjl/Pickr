@@ -1,57 +1,53 @@
-.container {
-  width: 100%;
-  max-width: 720px;
-  padding: 3rem 1.5rem;
-}
-
 .app-title {
   text-align: center;
   font-weight: 600;
   letter-spacing: -0.5px;
-  margin-bottom: 2rem;
-  font-size: 3.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 3rem;
 }
 
 .app-layout {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(520px, 620px);
+  gap: 1rem;
+  align-items: start;
 }
 
 .app-layout .card {
-  margin-bottom: 1rem;
-}
-
-.app-layout .card:last-child {
   margin-bottom: 0;
 }
 
-@media (min-width: 1024px) {
+.card-picker {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.card-time {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.card-tasks {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+@media (max-width: 959px) {
   .container {
-    max-width: 1320px;
+    max-width: 100%;
+    padding: 1.25rem;
   }
 
   .app-layout {
-    display: grid;
-    grid-template-columns: minmax(360px, 1fr) minmax(560px, 620px);
-    gap: 1rem;
-    align-items: start;
+    display: block;
   }
 
   .app-layout .card {
+    margin-bottom: 1rem;
+  }
+
+  .app-layout .card:last-child {
     margin-bottom: 0;
-  }
-
-  .card-picker {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-  }
-
-  .card-time {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .card-tasks {
-    grid-column: 1;
-    grid-row: 2;
   }
 }

@@ -15,6 +15,12 @@
   --transition: all 0.2s ease;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -26,8 +32,10 @@ body {
 
 .container {
   width: 100%;
-  max-width: 600px;
-  padding: 2rem;
+  max-width: 1320px;
+  padding: 1rem 1rem;
+  margin: 0 auto;
+  height: 100%;
 }
 
 .card {
