@@ -36,7 +36,11 @@
 @media (max-width: 959px) {
   .container {
     max-width: 100%;
-    padding: 1.25rem;
+    padding: 1rem 0.85rem 1.25rem;
+  }
+
+  .app-title {
+    font-size: clamp(2rem, 9vw, 2.6rem);
   }
 
   .app-layout {

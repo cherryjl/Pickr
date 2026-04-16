@@ -23,11 +23,17 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   background-color: var(--bg-dark);
   color: var(--text-light);
   display: flex;
   justify-content: center;
+  min-height: 100dvh;
+  overflow-x: hidden;
 }
 
 .container {

@@ -6,7 +6,7 @@ export default function Wheel({
   onSpin,
   onSpinEnd,
   isSpinning,
-  result
+  result,
 }) {
   const sliceStyle = useMemo(() => {
     if (!segments.length) return {};
@@ -19,7 +19,7 @@ export default function Wheel({
       "#f97316",
       "#22c55e",
       "#14b8a6",
-      "#0ea5e9"
+      "#0ea5e9",
     ];
 
     let gradient = "";
@@ -32,7 +32,7 @@ export default function Wheel({
     });
 
     return {
-      background: `conic-gradient(${gradient.slice(0, -2)})`
+      background: `conic-gradient(${gradient.slice(0, -2)})`,
     };
   }, [segments]);
 
@@ -45,28 +45,38 @@ export default function Wheel({
           className="wheel"
           style={{
             ...sliceStyle,
-            transform: `rotate(${rotation}deg)`
+            transform: `rotate(${rotation}deg)`,
           }}
-          onTransitionEnd={e => {
+          onTransitionEnd={(e) => {
             if (e.propertyName === "transform") {
               onSpinEnd();
             }
           }}
         >
-          {segments.map(segment => {
+          {segments.map((segment) => {
             if (segment.angleSize < 12) return null;
 
             const angle = segment.centerAngle;
+            const labelDistance =
+              segment.angleSize < 22
+                ? "-0.25"
+                : segment.angleSize < 34
+                  ? "-0.29"
+                  : "-0.33";
 
             return (
               <div
                 key={segment.id}
                 className="wheel-label"
                 style={{
+                  width: `clamp(78px, calc(var(--wheel-size) * ${Math.min(
+                    0.42,
+                    Math.max(0.28, segment.angleSize / 90),
+                  )}), 190px)`,
                   transform:
                     `translate(-50%, -50%) rotate(${angle}deg) ` +
-                    "translateY(-180px) " +
-                    `rotate(${-angle}deg)`
+                    `translateY(calc(var(--wheel-size) * ${labelDistance})) ` +
+                    `rotate(${-angle}deg)`,
                 }}
               >
                 <span>{segment.name}</span>
@@ -78,7 +88,11 @@ export default function Wheel({
         </div>
       </div>
 
-      <button onClick={onSpin} style={{ marginTop: "2rem" }} disabled={isSpinning}>
+      <button
+        onClick={onSpin}
+        style={{ marginTop: "2rem" }}
+        disabled={isSpinning}
+      >
         {isSpinning ? "Spinning..." : "Spin"}
       </button>
 

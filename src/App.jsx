@@ -13,10 +13,7 @@ export default function App() {
 
       <div className="app-layout">
         <div className="card card-time">
-          <TimeSelector
-            time={time}
-            setTime={setTime}
-          />
+          <TimeSelector time={time} setTime={setTime} />
         </div>
 
         <div className="card card-tasks">
@@ -24,11 +21,7 @@ export default function App() {
         </div>
 
         <div className="card card-picker">
-          <Picker
-            tasks={tasks}
-            time={time}
-            setTasks={setTasks}
-          />
+          <Picker tasks={tasks} time={time} setTasks={setTasks} />
         </div>
       </div>
     </div>

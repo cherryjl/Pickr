@@ -1,17 +1,13 @@
-export default function TimeSelector({
-  time,
-  setTime
-}) {
+export default function TimeSelector({ time, setTime }) {
   return (
     <div className="time-selector">
-      <p className="time-helper">Choose how much time you have available right now.</p>
+      <p className="time-helper">
+        Choose how much time you have available right now.
+      </p>
 
       <div className="time-presets">
-        {[20, 40, 60, 120, 180, 240].map(v => (
-          <button
-            key={v}
-            onClick={() => setTime(v)}
-          >
+        {[20, 40, 60, 120, 180, 240].map((v) => (
+          <button key={v} onClick={() => setTime(v)}>
             {v < 60 ? `${v}m` : `${v / 60}h`}
           </button>
         ))}
@@ -23,7 +19,7 @@ export default function TimeSelector({
         max="360"
         step="10"
         value={time}
-        onChange={e => setTime(+e.target.value)}
+        onChange={(e) => setTime(+e.target.value)}
         className="time-range"
       />
 
