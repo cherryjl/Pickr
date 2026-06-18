@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "cd dist && git init && git add -A && git commit -m 'deploy' && git push -f https://github.com/cherryjl/Pickr.git master:gh-pages && cd .."
   },
   "dependencies": {
     "framer-motion": "^12.34.3",
